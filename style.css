@@ -1,12 +1,13 @@
 /* Body */
 body {
     background: url(/Users/llenroc/Desktop/IMG_2717.jpg);
-    width: 100%;
-    display: inline-block;
-    vertical-align: middle;
-    background-size: 100%;
-    background-position: 50% 50%;
-    background: no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    max-width: 100%;
+    height: auto;
     font-family: 'Finger Paint', cursive;
 }
 

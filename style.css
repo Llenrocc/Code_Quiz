@@ -8,12 +8,6 @@ body {
     width: auto;
     max-width: 100%;
     height: auto;
-    font-family: 'Finger Paint', cursive;
-}
-
-.title {
-    font-family:'Finger Paint', cursive white;
-
 }
 
 .container {
@@ -28,3 +22,32 @@ body {
     box-shadow: 0 0 8px 3px grey;
 }
 
+.title {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Finger Paint', cursive;
+}
+
+.next-btn {
+    font-family: 'Finger Paint', cursive;
+}
+
+.question {
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+}
+
+.option {
+    width: 470px;
+    display: inline-block;
+    padding: 10px 0 10px 15px;
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 10px 0 10px 10px;
+    border-radius: 20px;
+}

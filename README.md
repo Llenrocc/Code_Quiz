@@ -1,6 +1,6 @@
 # Code_Quiz
 
-nstructions
+Instructions
 From scratch, build a timer-based quiz application that stores high scores client-side. Following the common templates for user stories, we can frame this challenge as follows:
 As a coding bootcamp student
 I want to take a timed quiz on JavaScript fundamentals that stores high scores
@@ -22,7 +22,3 @@ Score is calculated by time remaining. Answering quickly and correctly results i
 
 When time runs out and/or all questions are answered, the user is presented with their final score and asked to enter their initials. Their final score and initials are then stored in localStorage.
 
-
-
-
-Your application should also be responsive, ensuring that it adapts to multiple screen sizes.

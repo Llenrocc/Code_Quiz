@@ -1,36 +1,17 @@
-var questions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
-    },
-    
-    {
-      title: "The question I ask will be written eventually",
-      choices: ["answer", "answer", "answer", "answer"],
-      answer: "answer"
-    },
+// Variable for questions, an array of objects 
 
-    {
-      title: "The question I ask will be written eventually",
-      choices: ["answer", "answer", "answer", "answer"],
-      answer: "answer"
-    },
+var questions = [{
+  question: "What is the state tree of North Carolina?",
+  answers: ["Dogwood", "Longleaf Pine", "Bald Cypress","Fraser Fir"],
+  correctAnswer: "Dogwood",
+}, {
+  question: "North Carolina grows the most what in the nation?",
+  answers: ["Tomatoes", "Sweet Potatoes", "Broccoli", "Soybeans"],
+  correctAnswer: "Sweet Potatoes",
+}, {
+question: "What is the state bird?",
+  answers: ["Bald Eagle", "Blue Jay", "Cardinal", "Wild Turkey"],
+  correctAnswer: "Cardinal",
+},
 
-    {
-      title: "The question I ask will be written eventually",
-      choices: ["answer", "answer", "answer", "answer"],
-      answer: "answer"
-    },
-
-    {
-      title: "The question I ask will be written eventually",
-      choices: ["answer", "answer", "answer", "answer"],
-      answer: "answer"
-    },
-  ];
+];

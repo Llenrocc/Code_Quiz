@@ -42,6 +42,7 @@ body {
 .question {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px;
     font-size: 20px;
     border-radius: 20px;

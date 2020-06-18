@@ -10,4 +10,12 @@ var opt3 = document.getElementById('opt3');
 var opt4 = document.getElementById('opt4');
 var totQuestions = questions.length;
 
-var nex
+var nextButton = document.getElementById('nextButton');
+var resultCont = document.getElementById('result');
+
+// Adding load question function 
+function loadQuestion (questionIndex) {
+    var q = questions[questionIndex];
+    questionEl.textContent = (questionIndex + 1) + '. ' + q.question;
+    opt1.textContent = q.
+}

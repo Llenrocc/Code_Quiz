@@ -67,12 +67,13 @@ body {
     font-family: 'Finger Paint', cursive;
     border: none;
     outline: none;
-    background: rgba(255, 25, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
     width: 100px;
     height: 50px;
     font-size: 15px;
     border-radius: 20px;
     cursor: pointer;
+    margin: 10px;
 }
 
 .next-btn:hover {

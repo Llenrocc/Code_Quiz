@@ -1,116 +1,54 @@
-// remove the start button when clicked
-$('#start').on('click', function(){
-    $('#start').remove();
-  game.loadQuestion();
+// pos is position of where the user in the test or which question they're up to
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
 
-})
-
-// click event when you click the answer
-
-$(document).on('click','.answer-button',function(e){
-    game.clicked(e);
-})
-
-$(document).on('click','#reset',function(){
-    game.reset();
-})
-
-
-var game = {
-    questions:questions,
-    currentQuestion:0, 
-    counter:30, 
-    correct:0,
-    incorrect:0,
-    unanswered:0,
-    
-    countdown: function(){
-        game.counter --;
-        $('#counter').html(game.counter); 
-        if(game.counter<=0){
-            console.log("TIME UP!")
-            game.timeUp();
-        }
-    },
-    loadQuestion: function (){
-        timer = setInterval(game.countdown,1000);
-        $('#subwrapper').html("<h2> Time to Guess: <span id ='counter'>30</span> Seconds</h2>");
-        $('#subwrapper').append('<h2>'+questions[game.currentQuestion].question+'</h2>');
-        for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
-            $('#subwrapper').append('<button class="answer-button id="button- '+i+'" data-name="'+questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
-        }
-    },
-    nextQuestion: function(){
-        game.counter = 15;
-        $('#counter').html(game.counter);
-        game.currentQuestion++;
-        game.loadQuestion();
-
-    },
-    timeUp: function(){
-        clearInterval(timer);
-        game.unanswered++;
-        $('#subwrapper').html('<h2>Out of time!<h2>');
-        $('#subwrapper').append('<h3>The correct answer was: '+questions[game.currentQuestion].correctAnswer+'</h3>');
-        if(game.currentQuestion==questions.length-1){
-            setTimeout(game.results,3*1000);
-        } else{
-            setTimeout(game.nextQuestion,3*1000);
-        }
-
-    },
-    results: function(){
-        clearInterval(timer);
-        $('#subwrapper').html('<h2>Complete!</h2>')
-        $('#subwrapper').append(" Correct: " +game.correct + '<br/>');
-        $('#subwrapper').append(" Incorrect: " +game.incorrect + '<br/>');
-        $('#subwrapper').append(" Unanswered: " +game.unanswered + '<br/>');
-        $('#subwrapper').append("<button id= reset>Try again?</button>")
-
-
-    },
-    clicked: function(e){
-        clearInterval(timer);
-        if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer){
-            game.answeredCorrectly();
-    } else {
-        game.answeredIncorrectly();
-    }
-
-    },
-    answeredCorrectly: function(){
-        console.log("right!")
-        clearInterval(timer);
-        game.correct++;
-        $('#subwrapper').html('<h2> CORRECT!</h2>');
-        if(game.currentQuestion==questions.length-1){
-            setTimeout(game.results,2*1000);
-        } else{
-            setTimeout(game.nextQuestion,2*1000);
-        }
-
-    },
-    answeredIncorrectly: function(){
-        console.log("wrong")
-        clearInterval(timer);
-        game.incorrect++;
-        $('#subwrapper').html('<h2> Wrong!</h2>');
-        $('#subwrapper').append('<h3>The correct answer was: '+questions[game.currentQuestion].correctAnswer+'</h3>');
-        if(game.currentQuestion==questions.length-1){
-            setTimeout(game.results,2*1000);
-        } else{
-            setTimeout(game.nextQuestion,2*1000);
-        }
-
-    },
-    reset: function(){
-        game.currentQuestion = 0;
-        game.counter = 0;
-        game.correct = 0;
-        game.incorrect = 0;
-        game.unanswered = 0;
-        game.loadQuestion();
-
-    }
-
+// this get function is short for the getElementById function  
+function get(x){
+  return document.getElementById(x);
 }
+// this function renders a question for display on the page
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+    get("test_status").innerHTML = "Test completed";
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  
+  question = questions[pos].question;
+  chA = questions[pos].a;
+  chB = questions[pos].b;
+  chC = questions[pos].c;
+  // display the question
+  test.innerHTML = "<h3>"+question+"</h3>";
+  // display the answer options
+  // the += appends to the data we started on the line above
+  test.innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
+  test.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
+  test.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+function checkAnswer(){
+  // use getElementsByName because we have an array which it will loop through
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos].answer){
+    //each time there is a correct answer this value increases
+    correct++;
+  }
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+// Add event listener to call renderQuestion on page load event
+window.addEventListener("load", renderQuestion);

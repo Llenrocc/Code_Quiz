@@ -45,7 +45,7 @@ if (questions[currentQuestion].answer == answer) {
     var selectedOption = document.querySelector('input[type=radio]:checked');
 
     if(selectedOption){
-
+        
     }
  })
 

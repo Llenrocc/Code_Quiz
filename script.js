@@ -1,7 +1,7 @@
 var currentQuestion = 0;
 var score = 0;
 var totQuestions = questions.length;
-
+// Variables
 var container = document.getElementById('quizContainer');
 var questionEl = document.getElementById('question');
 var options = document.querySelector(".option");
@@ -31,7 +31,6 @@ function loadQuestion (questionIndex) {
 function loadNextQuestion () {
     var selectedOption = document.querySelector('input[type=radio]:checked');
     if (!selectedOption) {
-        alert('Please select your answer');
         return;
     }
 }
@@ -46,7 +45,7 @@ if (questions[currentQuestion].answer == answer) {
     var selectedOption = document.querySelector('input[type=radio]:checked');
 
     if(selectedOption){
-        
+
     }
  })
 
